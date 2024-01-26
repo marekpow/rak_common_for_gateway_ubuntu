@@ -27,7 +27,7 @@ ARGS=`getopt -o "" -l "help,img,chirpstack:" -- "$@"`
 
 eval set -- "${ARGS}"
 
-INSTALL_CHIRPSTACK=1
+INSTALL_CHIRPSTACK=0
 
 CREATE_IMG=""
 
@@ -49,14 +49,14 @@ while true; do
             if [ "not_install" = "${1}" ]; then
                 INSTALL_CHIRPSTACK=0
             elif [ "install" = "${1}" ]; then
-                INSTALL_CHIRPSTACK=1
+                INSTALL_CHIRPSTACK=0
             else
                 echo "invalid value"
                 exit
             fi
 
             if [ $rpi_model -ne 3 ] && [ $rpi_model -ne 4 ]; then
-                INSTALL_CHIRPSTACK=1
+                INSTALL_CHIRPSTACK=0
             fi
             shift;
         fi
